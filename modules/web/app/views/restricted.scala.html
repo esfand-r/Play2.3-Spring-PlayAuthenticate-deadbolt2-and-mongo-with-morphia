@@ -1,0 +1,11 @@
+@import com.mycane.security.model.usermanagement.User
+
+@(localUser: User = null)
+
+@main(Messages("mycane.navigation.restricted"), "restricted") {
+    
+    <h1>@Messages("mycane.navigation.restricted")</h1>
+    <p>
+        @Messages("mycane.restricted.secrets")
+    </p>
+}

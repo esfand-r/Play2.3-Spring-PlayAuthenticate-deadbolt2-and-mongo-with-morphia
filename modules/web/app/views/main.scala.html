@@ -1,0 +1,55 @@
+@(title: String, nav: String = "../../../usermanagement/public")(content: Html)
+    @import controllers.ApplicationController
+
+    @import be.objectify.deadbolt.java.views.html._
+    @import be.objectify.deadbolt.core.utils.TemplateUtils._
+
+<!DOCTYPE html>
+    <html lang="@lang().code()">
+        <head>
+            <title>@title</title>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+            <meta name="description" content="MyCane - Description">
+            <meta name="author" content="MyCane.io Team">
+
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+            <script src="@routes.Assets.at("externaljs/bootstrap.js")"></script>
+            <script src="@routes.Assets.at("externaljs/jquery.easing.min.js")"></script>
+            <script src="@routes.Assets.at("externaljs/jquery.fly_sidemenu.js")"></script>
+            <script src="@routes.Assets.at("javascripts/home-main.js")"></script>
+            <script src="@routes.Assets.at("externaljs/jquery.onepage-scroll.js")"></script>
+
+            <script src="@routes.ApplicationController.jsRoutes" defer="defer"></script>
+
+                <!-- Le styles -->
+            <link href="@routes.Assets.at("externalcss/bootstrap.min.css")" rel="stylesheet">
+            <link href="@routes.Assets.at("externalcss/onepage-scroll.css")" rel="stylesheet">
+            <link href="@routes.Assets.at("externalcss/fly_sidemenu.css")" rel="stylesheet">
+            <link href="@routes.Assets.at("externalcss/scrolling-nav.css")" rel="stylesheet">
+            <link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
+
+                <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+                <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+          <![endif]-->
+
+        </head>
+
+        <body>
+            @content
+
+            <nav>
+                <ul class="sidemenu">
+                    <li><a href="@routes.ApplicationController.index()">Home</a></li>
+                    <li><a href="@routes.UserController.signup()">Signup</a></li>
+                    <li><a href="@routes.ApplicationController.restricted()">Restricted</a></li>
+                    <li><a href="@routes.UserAccountController.profile()">Profile</a></li>
+                </ul>
+            </nav>
+        </body>
+    </html>

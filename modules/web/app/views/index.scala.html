@@ -1,0 +1,66 @@
+@(signupForm: Form[_], leadId:String)
+
+@import be.objectify.deadbolt.java.views.html._
+@import b3.vertical.fieldConstructor
+
+@main(Messages("mycane.index.title")) {
+    <div class="pointer"></div>
+    <div class="wrapper">
+        <div class="main">
+            <section class="page1">
+                <div class="page_container">
+                    <h2>About Us</h2>
+                    <p class="text-left">Lorem ipsum dolor sit amet, te quot aeterno persius est, per ad harum audire erroribus,
+                        usu nostrud definitiones ut. At prima ullum sit, ea nam falli percipitur dissentias, vis no eius option. Dolor perpetua ne eum, semper percipit vis et.
+                        Ut eam natum numquam pericula. Pri utroque nominavi facilisis cu.
+                    </p>
+                    <a id="signupButton" class="reload btn">@Messages("mycane.signup.now")</a>
+                </div>
+            </section>
+
+            <section class="page2">
+                <div class="page_container">
+                    <h2>Contact Us</h2>
+                    <p class="text-left">Lorem ipsum dolor sit amet, te quot aeterno persius est, per ad harum audire erroribus,
+                        usu nostrud definitiones ut. At prima ullum sit, ea nam falli percipitur dissentias, vis no eius option. Dolor perpetua ne eum, semper percipit vis et.
+                        Ut eam natum numquam pericula. Pri utroque nominavi facilisis cu.
+                    </p>
+                </div>
+            </section>
+
+            <section class="page3">
+                <fieldset class="col-md-6 col-md-offset-1">
+                    <div class="row">
+                        <div class="col-md-6 portfolio-item">
+                            @* Display proprietary login form *@
+                            @b3.form(routes.UserController.doSignup(leadId)) {
+
+                                @if(signupForm.hasGlobalErrors) {
+                                    <p class="error">
+                                        <span class="label label-important">@signupForm.globalError.message</span>
+                                    </p>
+                                }
+
+                                @b3.text(
+                                    signupForm("name"),
+                                    '_label -> "",
+                                    'placeholder -> "Your Name" ,
+                                    '_showConstraints -> false
+                                )
+
+                                @_emailPartial(signupForm)
+                                @_passwordPartial(signupForm)
+
+                                <input type="submit" value="@Messages("mycane.signup.now")" class="btn btn-primary">
+                                }
+                        </div>
+                        <div class="col-md-6 portfolio-item">
+                            @Messages("mycane.signup.oauth")
+                            @_providerPartial(skipCurrent=false)
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+        </div>
+    </div>
+}

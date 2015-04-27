@@ -1,0 +1,36 @@
+@import forms.usermanagement.AcceptForm
+
+@(acceptForm: Form[AcceptForm], newAccount: com.feth.play.module.pa.user.AuthUser)
+
+@import helper._
+
+@label = {
+	@_providerIcon(newAccount.getProvider()) @Messages("mycane.link.account.question",newAccount)
+}
+
+@main(Messages("mycane.link.account.title")) {
+
+	<h1>@Messages("mycane.link.account.title")</h1>
+	<p>
+	@form(routes.UserAccountController.doLink) {
+	   
+            @if(acceptForm.hasGlobalErrors) { 
+                <p class="error">
+		            <span class="label label-important">@acceptForm.globalError.message</span>
+		        </p>
+            }
+	   
+	   @inputRadioGroup(
+            acceptForm("accept"),
+            options = Seq(
+            	"true"-> Messages("mycane.link.account.true"),
+            	"false"->Messages("mycane.link.account.false")
+            ),
+            '_label -> label,
+            '_showConstraints -> false
+        )
+           
+		<input type="submit" value="@Messages("mycane.link.account.ok")" class="btn btn-primary">
+	}
+	</p>
+}

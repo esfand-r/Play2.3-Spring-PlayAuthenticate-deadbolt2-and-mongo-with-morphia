@@ -1,0 +1,52 @@
+@(loginForm: Form[_])
+@import controllers.AuthenticationController
+
+@import com.feth.play.module.pa.views.html._
+@import b3.vertical.fieldConstructor
+
+@main(Messages("mycane.login.title"),"login") {
+
+    <fieldset class="col-md-6 col-md-offset-3">
+        <legend>Sign in with your credentials</legend>
+
+        @* Display proprietary login form *@
+    	@b3.form(routes.AuthenticationController.doLogin()) {
+
+        @if(loginForm.hasGlobalErrors) {
+          <p class="error">
+            <span class="label label-important">@loginForm.globalError.message</span>
+          </p>
+        }
+
+        <div class="form-group has-feedback">
+            @_emailPartial(loginForm)
+            @b3.password(
+                loginForm("password"),
+                '_showConstraints -> true,
+                '_label -> Messages("mycane.login.password.placeholder")
+            )
+
+
+        <div>
+             <input type="submit" value="@Messages("mycane.login.now")" class="btn btn-lg btn-primary btn-block"><br/>
+        </div>
+
+        <br/>
+        <a href="javascript:void(0);" onclick="window.location.href = jsRoutes.controllers.Signup.forgotPassword($('#email').val() || null).absoluteURL();">@Messages("mycane.login.forgot.password")</a>
+
+    	}
+
+      @Messages("mycane.login.oauth")
+      @* Display list of available providers *@
+      @_providerPartial(skipCurrent=false)
+      @providerAvailable("basic") { available: Boolean =>
+          @if(available) {
+              <br>
+              <a href="controllers.AuthenticationController.authenticate("basic")">@Messages("mycane.login.basic")</a>
+          }
+      }
+
+    </div>
+
+  </fieldset>
+}

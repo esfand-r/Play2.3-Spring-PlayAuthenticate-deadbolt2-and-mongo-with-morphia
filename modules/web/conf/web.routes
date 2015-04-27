@@ -1,0 +1,42 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                     @controllers.ApplicationController.index()
+GET         /restricted                           @controllers.ApplicationController.restricted()
+GET         /assets/javascript/routes.js          controllers.ApplicationController.jsRoutes()
+
+
+GET         /signup                               @controllers.UserController.signup()
+POST        /signup                               @controllers.UserController.doSignup(leadId:String)
+
+GET         /login                                @controllers.AuthenticationController.login()
+POST        /login                                @controllers.AuthenticationController.doLogin()
+GET         /logout                               com.feth.play.module.pa.controllers.Authenticate.logout()
+GET         /authenticate/:provider               @controllers.AuthenticationController.authenticate(provider: String)
+GET         /authenticate/:provider/denied        @controllers.AuthenticationController.oAuthDenied(provider: String)
+
+GET         /account/verify                       @controllers.UserAccountController.verifyEmail()
+GET         /account/verify/:token                @controllers.UserAccountController.verify(token: String)
+GET         /account/unverified                   @controllers.UserAccountController.unverified()
+GET         /account/profile                      @controllers.UserAccountController.profile()
+GET         /account/invite                       @controllers.UserAccountController.invite()
+POST        /account/invite                       @controllers.UserAccountController.doInvite()
+GET         /account/exists                       @controllers.UserAccountController.exists()
+
+GET         /account/password/reset/:token        @controllers.UserAccountController.resetPassword(token: String)
+POST        /account/password/reset               @controllers.UserAccountController.doResetPassword()
+GET         /account/password/change              @controllers.UserAccountController.changePassword()
+POST        /account/password/change              @controllers.UserAccountController.doChangePassword()
+GET         /account/password/forgot              @controllers.UserAccountController.forgotPassword(email: String ?= "")
+POST        /account/password/forgot              @controllers.UserAccountController.doForgotPassword()
+
+GET         /account/add                          @controllers.UserAccountController.link()
+GET         /account/link                         @controllers.UserAccountController.askLink()
+POST        /account/link                         @controllers.UserAccountController.doLink()
+GET         /account/merge                        @controllers.UserAccountController.askMerge()
+POST        /account/merge                        @controllers.UserAccountController.doMerge()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                         controllers.Assets.at(path="/public", file)

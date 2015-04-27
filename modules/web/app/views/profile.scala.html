@@ -1,0 +1,53 @@
+@import com.mycane.security.model.usermanagement.User
+
+@import controllers.ApplicationController
+
+@(localUser: User = null)
+
+@import com.feth.play.module.pa.views.html._
+
+@main(Messages("mycane.profile.title"),"profile") {
+    <h1>@Messages("mycane.profile.title")</h1>
+
+    <p>
+    Your name is @localUser.getName() and your email address is @if(!localUser.getEmail()) {<em>&lt;unknown&gt;</em>.} else {
+    	@localUser.getEmail().
+	    <i>
+	    @if(!localUser.isEmailValidated() && localUser.getEmail()) {
+	      (<a href="@routes.UserAccountController.verifyEmail">unverified - click to verify</a>)
+	    } else {
+	      (verified)
+	    }</i>
+    }
+    <br />
+        @if(localUser.getFirstName() && localUser.getLastName()) {
+            Your first name is @localUser.getFirstName() and your last name is @localUser.getLastName()
+            <br/>
+        }
+    @defining(localUser.getProviders()) { providers =>
+        @if(providers.size() > 0) {
+        @if(providers.size() ==1) {
+            @Messages("mycane.profile.providers_one")
+        } else {
+            @Messages("mycane.profile.providers_many",providers.size().toString())
+        }
+        @for(p <- providers) {
+            @_providerIcon(p)
+        }
+        <br/>
+        }
+    }
+
+    <br/>
+    @currentAuth() { auth =>
+        @Messages("mycane.profile.logged") @_providerIcon(auth.getProvider())<br/>
+        @if(auth.expires() != -1){
+            @Messages("mycane.profile.session", auth.getId(), ApplicationController.formatTimestamp(auth.expires()))
+        } else {
+            @Messages("mycane.profile.session_endless", auth.getId())
+        }
+    }
+    <br/>
+
+    <a href="@routes.UserAccountController.changePassword">@Messages("mycane.profile.password_change")</a>
+}

@@ -1,0 +1,52 @@
+@import com.mycane.security.model.usermanagement.User
+
+@import controllers.UserAccountController
+
+@import com.mycane.security.model.usermanagement.User
+
+@(localUser: User = null, inviteForm: Form[_])
+
+@import b3.vertical.fieldConstructor
+
+@main(Messages("mycane.invite.restricted"), "restricted") {
+    <fieldset class="col-md-6 col-md-offset-3">
+    @b3.form(routes.UserAccountController.doInvite()) {
+        @if(inviteForm.hasGlobalErrors) {
+            <p class="error">
+                <span class="label label-important">@inviteForm.globalError.message</span>
+            </p>
+        }
+
+        <div class="row">
+            <div class="col-md-6">
+            @b3.text(
+                inviteForm("name"),
+                '_label -> "../../../usermanagement/public",
+                'placeholder -> "Name",
+                '_showConstraints -> false
+            )
+            </div>
+            <div class="col-md-6">
+            @b3.text(
+                inviteForm("name"),
+                '_label -> "../../../usermanagement/public",
+                'placeholder -> "Email Address",
+                '_showConstraints -> false
+            )
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <input type="submit" value="@Messages("mycane.invite.now")" class="btn btn-primary">
+            </div>
+            <div class="col-md-8">
+                <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://your page url&title=Your Page Title&summary=Your page content description&source=My Website Name" target="_new">
+                    <img class="btn-primary" src="@routes.Assets.at("icons/linkedin.png")" id="linkedin-share-button" alt="linkedin share button" width="80" height="60" title="Share on Linked In" />
+                </a>
+            </div>
+        </div>
+
+        }
+
+    </fieldset>
+}

@@ -1,0 +1,10 @@
+@(f: Form[_], constraints: Boolean = false)
+
+@import b3.vertical.fieldConstructor
+
+@b3.text(
+    f("email"),
+    'placeholder -> Messages("mycane.login.email.placeholder"),
+    '_showConstraints -> false,
+    '_label -> ""
+)

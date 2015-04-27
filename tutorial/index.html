@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <h2>Play2.3-Spring-PlayAuthenticate-deadbolt2-and-mongo-with-morphia</h2>
+
+    <p>
+        This project is an example implementation of a multi-module play app with authentication and authorization
+        capabilities.
+    </p>
+
+    <p>
+        Play was chosen as the main framework to develop this app because of it's amazing ecosystem, plugins
+        or other benefits, such as Akka, CoffeeScript support Web Sockets and a lot more.
+    </p>
+
+    <p>
+        The starting point of this application was <a
+            href="http://joscha.github.io/play-authenticate/">PlayAuthenticate</a>
+        It's a configurable framework that makes the job easy and customizable and <a
+            href="https://www.typesafe.com/activator/template/play-authenticate-mongo">Play Authenticate with Mongo</a>.
+        Next <a href="http://silhouette.mohiva.com/">Silhouette</a> and <a
+            href="http://securesocial.ws/">SecureSocial</a>
+        will be used to compare all these very cool frameworks.
+    </p>
+</div>
+
+<div>
+    <h2>Dependency Injection</h2>
+
+    <p>
+        For dependency injection <code>Spring</code> is used but it can be easy swapped with <code>dagger</code>
+        or <code>guice</code> (Play2.4's default). <code>jsr330</code> annotations are used throughput to make the
+        transition easier.
+        Through different branches, using <code>Dagger</code> for dependency injection will also be demonstrated.
+    </p>
+</div>
+
+<div>
+    <h2>Database</h2>
+
+    <p>
+        For persistence <code>MongoDB</code> is used along with <code>Morphia</code> driver.
+        Branches will be provided to have the same implementation using other drivers such as <code>ReactiveMongo</code>.
+        Switching the driver is easy as only some annotation change and changes in DAOs are required.
+    </p>
+
+    <p>
+        To install <code>MongoDB</code> on your computer you can use this <a
+            href="http://docs.mongodb.org/v3.0/installation/">manual</a>.
+    </p>
+</div>
+
+</body>
+</html>

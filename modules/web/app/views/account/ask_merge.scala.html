@@ -1,0 +1,38 @@
+@import forms.usermanagement.AcceptForm
+
+@import controllers.UserAccountController
+
+@(acceptForm: Form[AcceptForm], aUser: com.feth.play.module.pa.user.AuthUser, bUser: com.feth.play.module.pa.user.AuthUser)
+
+@import helper._
+
+@label = {
+	@Messages("mycane.merge.accounts.question",aUser,bUser)
+}
+
+@main(Messages("mycane.merge.accounts.title")) {
+
+	<h1>@Messages("mycane.merge.accounts.title")</h1>
+	<p>
+	@form(routes.UserAccountController.doMerge) {
+
+            @if(acceptForm.hasGlobalErrors) { 
+                <p class="error">
+		            <span class="label label-important">@acceptForm.globalError.message</span>
+		        </p>
+            }
+	   
+	   @inputRadioGroup(
+            acceptForm("accept"),
+            options = Seq(
+            	"true"-> Messages("mycane.merge.accounts.true"),
+            	"false"->Messages("mycane.merge.accounts.false")
+            ),
+            '_label -> label,
+            '_showConstraints -> false
+        )
+           
+		<input type="submit" value="@Messages("mycane.merge.accounts.ok")" class="btn btn-primary">
+	}
+	</p>
+}

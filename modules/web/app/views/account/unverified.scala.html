@@ -1,0 +1,9 @@
+@import controllers.UserAccountController
+
+@main(Messages("mycane.verify.account.title")) {
+
+	<h1>@Messages("mycane.verify.account.title")</h1>
+	<p>
+	@Messages("mycane.verify.account.before") <a href="@routes.UserAccountController.verifyEmail">@Messages("mycane.verify.account.first")</a>.<br/>
+	</p>
+}

@@ -1,0 +1,10 @@
+@(verificationUrl: String, name: String)Howdy @name,
+
+
+You recently signed up for MyCane by @name.
+
+To activate your account, follow this link now:
+@verificationUrl
+
+Cheers,
+The MyCane Team
