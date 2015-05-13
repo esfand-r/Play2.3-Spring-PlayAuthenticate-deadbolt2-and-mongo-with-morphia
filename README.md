@@ -1,7 +1,7 @@
 Authentication and authorization in a Play application
 =================================
 
- This project is an example implementation of a multi-module play app with authentication and authorization capabilities.
+ This project is an example implementation of a multi-module play app with authentication and authorization capabilities. This is accompanied by a [blog post](http://esfand-r.github.io/2015/05/fun-and-games-in-the-play-ground-authentication-and-authorization/).
  Play was chosen as the main framework to develop this app because of it's amazing ecosystem, plugins and other benefits 
  such as Akka, CoffeeScript support Web Sockets and a lot more. 
  
