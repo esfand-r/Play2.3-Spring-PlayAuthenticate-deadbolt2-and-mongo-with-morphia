@@ -29,7 +29,7 @@ Dependency Injection
 =================================
  For dependency injection Spring is used but it can be easy swapped with dagger or guice(Play2.4's default). 
  jsr330 annotations are used throughput to make the transition easier.
- Through different branches, using [Dagger](http://square.github.io/dagger/) for dependency injection will also be demonstrated.
+ Here is a small app I created using [Dagger](http://square.github.io/dagger/) for dependency injection.
  
 Database
 =================================
