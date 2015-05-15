@@ -42,8 +42,8 @@ Database
  which uses [QueryDSLClassGenerator](https://github.com/esfand-r/Play2.3-Spring-PlayAuthenticate-deadbolt2-and-mongo-with-morphia/blob/master/modules/securitycommon/app/com/mycane/security/model/QueryDSLClassGenerator.java) 
  and [GenericExporter](https://github.com/querydsl/querydsl/blob/master/querydsl-codegen/src/main/java/com/querydsl/codegen/GenericExporter.java) to generate the necessary classes.
   
- Testing
- =================================
+Testing
+=================================
  Spring-test combined with ScalaTest are and will be used for testing. When persistence with MongoDB is required, I used Flapdoodle.
  [TestConfig](https://github.com/esfand-r/Play2.3-Spring-PlayAuthenticate-deadbolt2-and-mongo-with-morphia/blob/master/modules/usermanagement/test/com/mycane/usermanagement/TestConfig.java) , 
  [MongoIntegrationTestBase](https://github.com/esfand-r/Play2.3-Spring-PlayAuthenticate-deadbolt2-and-mongo-with-morphia/blob/master/modules/usermanagement/test/com/mycane/usermanagement/MongoIntegrationTestBase.scala) 
